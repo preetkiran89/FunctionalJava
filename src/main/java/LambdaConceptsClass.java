@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.Period;
 import java.util.List;
+import java.util.stream.Collectors;
 
 //import static MaxSpeedOfCar.getMaxSpeed; Need to define 2 in different packages & not default
 
@@ -23,9 +24,15 @@ public class LambdaConceptsClass {
         d1.printSomething();
 
         //Arrays
-        List<Integer> test1 = List.of(1,2,3,4);
+        List<Integer> test1 = List.of(91,27,13,43);
         for(int i:test1)
             System.out.println("Testing Array:::: " + i);
+
+        System.out.println("Printing square of a list using Lambda::");
+        SquareOfInput t = (List<Integer> inputList) -> {
+            List<Integer> outputList= inputList.stream().map(p -> p *p).collect(Collectors.toList());
+            return outputList;
+        };
     }
 }
 
@@ -53,4 +60,8 @@ interface LambdaExpressionss {
     //public int getAddition(int x, int y);
     //public void printSomething(); Can have only 1 abstract method to do implementation as ->
     void printSomething();
+}
+
+interface SquareOfInput {
+    List<Integer> squareOfInp(List<Integer> inputList);
 }
